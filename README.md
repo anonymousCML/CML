@@ -23,11 +23,7 @@ Retail Rocket: https://www.kaggle.com/retailrocket/ecommerce-dataset
 Tmall:  https://tianchi.aliyun.com/dataset/dataDetail?dataId=649 
 
 ### Baseline
-To verify the effectiveness of the model, we uploaded the upper and lower bounds of baseline.
 
-EHCF
-
-NGCF
 
 
 
