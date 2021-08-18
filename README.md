@@ -27,7 +27,7 @@ To verify the effectiveness of the model, we uploaded the upper and lower bounds
 
 EHCF
 
-NDCG
+NGCF
 
 
 
