@@ -1,8 +1,9 @@
 # CML
 The implementation of Contrastive Meta Learning with Behavior Multiplicity for Recommendation
 
-# mkdir History
-# mkdir Model
+mkdir History
+
+mkdir Model
 
 ### Requirements
 numpy==1.20.3
@@ -23,8 +24,10 @@ Tmall:  https://tianchi.aliyun.com/dataset/dataDetail?dataId=649
 
 ### Baseline
 To verify the effectiveness of the model, we uploaded the upper and lower bounds of baseline.
-# EHCF
-# NDCG
+
+EHCF
+
+NDCG
 
 
 
