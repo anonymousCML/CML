@@ -1,9 +1,9 @@
 # CML
 The implementation of Contrastive Meta Learning with Behavior Multiplicity for Recommendation
 
-mkdir History
+mkdir /History
 
-mkdir Model
+mkdir /Model
 
 ### Requirements
 numpy==1.20.3
