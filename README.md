@@ -15,7 +15,7 @@ PyTorch implementation for paper: Contrastive Meta Learning with Behavior Multip
 
 ## Dataset Preparation
 
-#### raw data：
+#### Raw data：
 - IJCAI contest:  https://tianchi.aliyun.com/dataset/dataDetail?dataId=47
 - Retail Rocket: https://www.kaggle.com/retailrocket/ecommerce-dataset
 - Tmall:  https://tianchi.aliyun.com/dataset/dataDetail?dataId=649 
