@@ -38,7 +38,7 @@ PyTorch implementation for paper: Contrastive Meta Learning with Behavior Multip
 If you want to use our codes in your research, please cite:
 
 ```
-@article{MICRO21,
+@article{CML22,
   title     = {Contrastive Meta Learning with Behavior Multiplicity forRecommendation},
   author    = {}
 ```
