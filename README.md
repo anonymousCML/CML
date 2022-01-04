@@ -21,7 +21,7 @@ PyTorch implementation for paper: Contrastive Meta Learning with Behavior Multip
 - Tmall:  https://tianchi.aliyun.com/dataset/dataDetail?dataId=649 
 
 #### Processed data:
-- [Baidu Yun](https://pan.baidu.com/s/15mcDoeLUN3BBBbAv-A3nQA)     access code:  ame6    
+- [Baidu Yun](https://pan.baidu.com/s/15mcDoeLUN3BBBbAv-A3nQA)     (access code:  ame6)    
 - [Google Drive](https://drive.google.com/drive/folders/1sFg9W2wCexWahjqtN6MVc4f4dMj5hyFp?usp=sharing)
 
 
