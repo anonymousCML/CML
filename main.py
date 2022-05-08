@@ -593,7 +593,7 @@ class Model():
 
             for index in range(len(self.behaviors)):
 
-                user_id, item_id_pos, item_id_neg = self.sampleTrainBatch(t.as_tensor(self.meta_user), self.behaviors_data[i])
+                user_id, item_id_pos, item_id_neg = self.sampleTrainBatch(t.as_tensor(self.meta_user), self.behaviors_data[index])
 
                 user_index_list[index] = user_id
 
