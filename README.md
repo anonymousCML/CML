@@ -1,7 +1,12 @@
 # CML
 
-PyTorch implementation for paper: Contrastive Meta Learning with Behavior Multiplicity forRecommendation<a href='https://arxiv.org/pdf/2202.08523.pdf'>Paper in arXiv</a>.
+This repository contains PyTorch codes and datasets for the paper:
 
+> Wei, Wei and Huang, Chao and Xia, Lianghao and Xu, Yong and Zhao, Jiashu and Yin, Dawei. Contrastive Meta Learning with Behavior Multiplicity forRecommendation<a href='https://arxiv.org/pdf/2202.08523.pdf'>Paper in arXiv</a>.
+
+
+## Introduction
+Contrastive Meta Learning (CML) leverages multi-behavior learning paradigm to model diverse and multiplex user-item relationships, as well as tackling the label scarcity problem for target behaviors. The designed multi-behavior contrastive task is to capture the transferable user-item relationships from multi-typed user behavior data heterogeneity. Furthermore, our proposed meta contrastive encoding scheme allows CML to preserve the personalized multi-behavior characteristics, so as to be reflective of the diverse behavior-aware user preference under a customized self-supervised framework.
 
 
 ## Dependencies
