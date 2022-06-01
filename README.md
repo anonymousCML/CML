@@ -10,7 +10,7 @@ Contrastive Meta Learning (CML) leverages multi-behavior learning paradigm to mo
 
 
 ## Citation
-@inproceedings{wei2022contrastive,
+> @inproceedings{wei2022contrastive,
   title={Contrastive meta learning with behavior multiplicity for recommendation},
   author={Wei, Wei and Huang, Chao and Xia, Lianghao and Xu, Yong and Zhao, Jiashu and Yin, Dawei},
   booktitle={Proceedings of the Fifteenth ACM International Conference on Web Search and Data Mining},
@@ -19,7 +19,9 @@ Contrastive Meta Learning (CML) leverages multi-behavior learning paradigm to mo
 }
 
 
-## Dependencies
+## Environment
+
+The codes of CML are implemented and tested under the following development environment:
 
 - Python 3.6
 - torch==1.8.1+cu111
@@ -28,20 +30,20 @@ Contrastive Meta Learning (CML) leverages multi-behavior learning paradigm to mo
 
 
 
-## Dataset Preparation
+## Datasets
 
 #### Raw data：
 - IJCAI contest:  https://tianchi.aliyun.com/dataset/dataDetail?dataId=47
 - Retail Rocket: https://www.kaggle.com/retailrocket/ecommerce-dataset
 - Tmall:  https://tianchi.aliyun.com/dataset/dataDetail?dataId=649 
-
+#### Processed data：
+The processed IJCAI and Tmall are under the /datasets folder.
 
 
 ## Usage
 You need to create the `History/` and the `Models/` directories. 
 - mkdir /History
 - mkdir /Model 
-
 
 The command to train CML on the Tmall/IJCAI/Retailrocket datasets are as follows. The commands specify the hyperparameter settings that generate the reported results in the paper.
 
