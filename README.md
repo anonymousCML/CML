@@ -10,13 +10,15 @@ Contrastive Meta Learning (CML) leverages multi-behavior learning paradigm to mo
 
 
 ## Citation
-> @inproceedings{wei2022contrastive,
+```
+@inproceedings{wei2022contrastive,
   title={Contrastive meta learning with behavior multiplicity for recommendation},
   author={Wei, Wei and Huang, Chao and Xia, Lianghao and Xu, Yong and Zhao, Jiashu and Yin, Dawei},
   booktitle={Proceedings of the Fifteenth ACM International Conference on Web Search and Data Mining},
   pages={1120--1128},
   year={2022}
 }
+```
 
 
 ## Environment
@@ -62,8 +64,6 @@ python .\main.py --dataset='retailrocket' --sampNum=40 --lr=3e-4 --opt_base_lr=1
         
 
 
-
-
 <!-- Important arguments:
 * `reg`: It is the weight for weight-decay regularization. We tune this hyperparameter from the set `{1e-2, 1e-3, 1e-4, 1e-5}`.
 * `ssl_reg`: This is the weight for the hypergraph-graph contrastive learning loss. The value is tuned from `1e-2` to `1e-8`.
@@ -72,17 +72,6 @@ python .\main.py --dataset='retailrocket' --sampNum=40 --lr=3e-4 --opt_base_lr=1
  -->
 
 
-## Citation
-If you want to use our codes and datasets in your research, please cite:
-```
-@inproceedings{wei2022contrastive,
-  title={Contrastive meta learning with behavior multiplicity for recommendation},
-  author={Wei, Wei and Huang, Chao and Xia, Lianghao and Xu, Yong and Zhao, Jiashu and Yin, Dawei},
-  booktitle={Proceedings of the Fifteenth ACM International Conference on Web Search and Data Mining},
-  pages={1120--1128},
-  year={2022}
-}
-```
 
 
 
