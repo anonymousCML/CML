@@ -49,11 +49,7 @@ class Model():
         #Tmall: 3,4,5,6,8,59
         #IJCAI_15: 5,6,8,10,13,53
 
-        # self.meta_multi_file = args.path + args.dataset + '/meta_multi_beh_user_index'
-        # self.meta_single_file = args.path + args.dataset + '/meta_single_beh_user_index'
         self.meta_multi_single_file = args.path + args.dataset + '/meta_multi_single_beh_user_index_shuffle'
-        #                                                         /meta_multi_single_beh_user_index_shuffle
-        #                                                         /new_multi_single
 
         # self.meta_multi = pickle.load(open(self.meta_multi_file, 'rb'))
         # self.meta_single = pickle.load(open(self.meta_single_file, 'rb'))
@@ -233,8 +229,8 @@ class Model():
                 else:
                     x_pos_all = t.cat((x_pos_all, x_pos), 0)
                     x_neg_all = t.cat((x_neg_all, x_neg), 0)
-            x_pos_all = t.as_tensor(x_pos_all)  #[9900, 100]
-            x_neg_all = t.as_tensor(x_neg_all)  #[9900, 100]  
+            x_pos_all = t.as_tensor(x_pos_all)  #
+            x_neg_all = t.as_tensor(x_neg_all)  #  
 
             return x_pos_all, x_neg_all
 
@@ -250,27 +246,27 @@ class Model():
             neg_score_pre = t.sum(compute(embedding1, embedding2, neg1_index, neg2_index).squeeze())
             return neg_score_pre
 
-        def multi_neg_sample_pair_index(batch_index, step_index, embedding1, embedding2):  #small, big, target, beh: [100], [1024], [31882, 16], [31882, 16]
+        def multi_neg_sample_pair_index(batch_index, step_index, embedding1, embedding2):  #
 
             index_set = set(np.array(step_index.cpu()))
             batch_index_set = set(np.array(batch_index.cpu()))
-            neg2_index_set = index_set - batch_index_set                         #beh
-            neg2_index = t.as_tensor(np.array(list(neg2_index_set))).long().cuda()  #[910]
-            neg2_index = t.unsqueeze(neg2_index, 0)                              #[1, 910]
-            neg2_index = neg2_index.repeat(len(batch_index), 1)                  #[100, 910]
-            neg2_index = t.reshape(neg2_index, (1, -1))                          #[1, 91000]
-            neg2_index = t.squeeze(neg2_index)                                   #[91000]
-                                                                                 #target
-            neg1_index = batch_index.long().cuda()     #[100]
-            neg1_index = t.unsqueeze(neg1_index, 1)                              #[100, 1]
-            neg1_index = neg1_index.repeat(1, len(neg2_index_set))               #[100, 910]
-            neg1_index = t.reshape(neg1_index, (1, -1))                          #[1, 91000]           
-            neg1_index = t.squeeze(neg1_index)                                   #[91000]
+            neg2_index_set = index_set - batch_index_set                         
+            neg2_index = t.as_tensor(np.array(list(neg2_index_set))).long().cuda()  
+            neg2_index = t.unsqueeze(neg2_index, 0)                              
+            neg2_index = neg2_index.repeat(len(batch_index), 1)                  
+            neg2_index = t.reshape(neg2_index, (1, -1))                          
+            neg2_index = t.squeeze(neg2_index)                                   
+                                                                                 
+            neg1_index = batch_index.long().cuda()     
+            neg1_index = t.unsqueeze(neg1_index, 1)                              
+            neg1_index = neg1_index.repeat(1, len(neg2_index_set))               
+            neg1_index = t.reshape(neg1_index, (1, -1))                                     
+            neg1_index = t.squeeze(neg1_index)                                   
 
-            neg_score_pre = t.sum(compute(embedding1, embedding2, neg1_index, neg2_index).squeeze().view(len(batch_index), -1), -1)  #[91000,1]==>[91000]==>[100, 910]==>[100]
-            return neg_score_pre  #[100]
+            neg_score_pre = t.sum(compute(embedding1, embedding2, neg1_index, neg2_index).squeeze().view(len(batch_index), -1), -1)  
+            return neg_score_pre  
 
-        def compute(x1, x2, neg1_index=None, neg2_index=None, τ = 0.05):  #[1024, 16], [1024, 16]
+        def compute(x1, x2, neg1_index=None, neg2_index=None, τ = 0.05):  
 
             if neg1_index!=None:
                 x1 = x1[neg1_index]
@@ -282,13 +278,13 @@ class Model():
             x1 = x1
             x2 = x2
 
-            scores = t.exp(t.div(t.bmm(x1.view(N, 1, D), x2.view(N, D, 1)).view(N, 1), np.power(D, 1)+1e-8))  #[1024, 1]
+            scores = t.exp(t.div(t.bmm(x1.view(N, 1, D), x2.view(N, D, 1)).view(N, 1), np.power(D, 1)+1e-8))  #
             
             return scores
         def single_infoNCE_loss_simple(embedding1, embedding2):
-            pos = score(embedding1, embedding2)  #[100]
+            pos = score(embedding1, embedding2)  #
             neg1 = score(embedding2, row_column_shuffle(embedding1))  
-            one = t.cuda.FloatTensor(neg1.shape[0]).fill_(1)  #[100]
+            one = t.cuda.FloatTensor(neg1.shape[0]).fill_(1)  #
             # one = zeros = t.ones(neg1.shape[0])
             con_loss = t.sum(-t.log(1e-8 + t.sigmoid(pos))-t.log(1e-8 + (one - t.sigmoid(neg1))))  
             return con_loss
@@ -298,10 +294,10 @@ class Model():
             N = embedding1.shape[0]
             D = embedding1.shape[1]
 
-            pos_score = compute(embedding1, embedding2).squeeze()  #[100, 1]
+            pos_score = compute(embedding1, embedding2).squeeze()  #
 
-            neg_x1, neg_x2 = neg_sample_pair(embedding1, embedding2)  #[9900, 100], [9900, 100]
-            neg_score = t.sum(compute(neg_x1, neg_x2).view(N, (N-1)), dim=1)  #[100]  
+            neg_x1, neg_x2 = neg_sample_pair(embedding1, embedding2)  #
+            neg_score = t.sum(compute(neg_x1, neg_x2).view(N, (N-1)), dim=1)  #
             con_loss = -t.log(1e-8 +t.div(pos_score, neg_score))   
             con_loss = t.mean(con_loss)  
             return max(0, con_loss)
@@ -310,8 +306,8 @@ class Model():
             N = step_index.shape[0]
             D = embedding1.shape[1]
 
-            pos_score = compute(embedding1[step_index], embedding2[step_index]).squeeze()  #[1024]
-            neg_score = t.zeros((N,), dtype = t.float64).cuda()  #[1024]
+            pos_score = compute(embedding1[step_index], embedding2[step_index]).squeeze()  #
+            neg_score = t.zeros((N,), dtype = t.float64).cuda()  #
 
             #-------------------------------------------------multi version-----------------------------------------------------
             steps = int(np.ceil(N / args.SSL_batch))  #separate the batch to smaller one 
@@ -327,7 +323,7 @@ class Model():
                     neg_score = t.cat((neg_score, neg_score_pre), 0)
             #-------------------------------------------------multi version-----------------------------------------------------
 
-            con_loss = -t.log(1e-8 +t.div(pos_score, neg_score+1e-8))  #[1024]/[1024]==>1024
+            con_loss = -t.log(1e-8 +t.div(pos_score, neg_score+1e-8))  #
 
 
             assert not t.any(t.isnan(con_loss))
@@ -347,7 +343,7 @@ class Model():
 
         user_con_losss = t.stack(user_con_loss_list, dim=0)  
 
-        return user_con_loss_list, user_step_index  #4*[1024]
+        return user_con_loss_list, user_step_index  #
 
     def run(self):
      
@@ -804,7 +800,7 @@ class Model():
         history['NDCG'] = self.his_ndcg
         ModelName = self.modelName
 
-        with open(r'./History/' + args.dataset + r'/' + ModelName + '.his', 'wb') as fs: 
+        with open(r'/home/ww/Code/work3/check/CML/History/' + args.dataset + r'/' + ModelName + '.his', 'wb') as fs: 
             pickle.dump(history, fs)
 
     def saveModel(self):  
@@ -814,7 +810,7 @@ class Model():
         history['loss'] = self.train_loss
         history['HR'] = self.his_hr
         history['NDCG'] = self.his_ndcg
-        savePath = r'./Model/' + args.dataset + r'/' + ModelName + r'.pth'
+        savePath = r'/home/ww/Code/work3/check/CML/Model/' + args.dataset + r'/' + ModelName + r'.pth'
         params = {
             'epoch': self.curEpoch,
             # 'lr': self.lr,
