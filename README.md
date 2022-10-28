@@ -43,9 +43,6 @@ The codes of CML are implemented and tested under the following development envi
 
 
 ## Usage
-You need to create the `History/` and the `Models/` directories. 
-- mkdir /History
-- mkdir /Model 
 
 The command to train CML on the Tmall/IJCAI/Retailrocket datasets are as follows. The commands specify the hyperparameter settings that generate the reported results in the paper.
 
