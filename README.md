@@ -81,7 +81,7 @@ python .\main.py --dataset='retailrocket' --sampNum=40 --lr=3e-4 --opt_base_lr=1
 
 
 
-It will be released again in two days in the optimized code version.
+It will be released again in few days in the optimized code version.
 
 
 
