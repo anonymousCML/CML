@@ -41,7 +41,7 @@ The codes of CML are implemented and tested under the following development envi
 - Retail Rocket: https://www.kaggle.com/retailrocket/ecommerce-dataset
 - Tmall:  https://tianchi.aliyun.com/dataset/dataDetail?dataId=649 
 #### Processed data：
-- The processed IJCAI and Tmall are under the /datasets folder.
+- The processed IJCAI are under the /datasets folder.
 
 
 ## Usage
