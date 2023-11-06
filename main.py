@@ -486,7 +486,8 @@ class Model():
         time = datetime.datetime.now()
         print("start_ng_samp:  ", time)
         train_loader.dataset.ng_sample()
-        time = datetime.datetime.now()
+
+
         print("end_ng_samp:  ", time)
         
         epoch_loss = 0
